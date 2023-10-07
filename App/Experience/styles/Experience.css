@@ -1,0 +1,15 @@
+
+
+.experience-wrapper{
+    position: fixed;
+    width:100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .experience{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+  }
+  
