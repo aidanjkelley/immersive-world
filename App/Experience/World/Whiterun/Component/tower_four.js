@@ -1,0 +1,57 @@
+import * as THREE from "three";
+import Experience from "../../../Experience.js";
+
+import { OctreeHelper } from "three/examples/jsm/helpers/OctreeHelper.js";
+
+export default class Tower4 {
+    constructor() {
+        this.experience = new Experience();
+        this.scene = this.experience.scene;
+        this.resources = this.experience.resources;
+        this.octree = this.experience.world.octree;
+
+        this.initTower4 ();
+        this.setMaterials();
+    
+       
+    }
+
+    async initTower4() {
+        try {
+            this.tower4 = this.resources.items.whiterun.tower4; // Updated object reference
+            console.log("Tower 4 loaded:", this.tower4);
+        } catch (error) {
+            console.error("Failed to load Tower 4:", error);
+        }
+
+        this.tower4_texture = this.resources.items.whiterun.tower4_texture; // Updated texture reference
+    }
+
+// ...
+setMaterials() {
+    if (this.tower4_texture) {
+        console.log("Texture is loaded:", this.tower4_texture);
+
+        // Find the actual THREE.Object3D within the loaded model
+        // It may be in the 'scene' property or another part of the loaded object
+        const object3D = this.tower4.scene || this.tower4;
+
+        // Print the name of the 3D object
+        console.log("Actual 3D object name:", object3D.name);
+
+        this.tower4_texture.encoding = THREE.sRGBEncoding; // Updated encoding
+
+        object3D.traverse((child) => {
+            if (child.isMesh) {
+                child.material = new THREE.MeshBasicMaterial({
+                    map: this.tower4_texture,
+                });
+            }
+        });
+
+        this.scene.add(object3D);
+    } else {
+        console.error("Texture not loaded or undefined.");
+    }
+}
+}

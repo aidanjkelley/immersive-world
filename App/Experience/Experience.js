@@ -15,6 +15,7 @@ import Renderer from "./Renderer.js";
 import World from "./World/World.js";
 
 
+
 export default class Experience {
     static instance;
     constructor(canvas) {

@@ -28,7 +28,7 @@ export default class Camera {
                 this.params.near,
                 this.params.far
             );
-            this.perspectiveCamera.position.z = 5;
+            this.perspectiveCamera.position.set(0.322358216775106, 0.7013836579667079, 3.4052930303136884);
             this.scene.add(this.perspectiveCamera);
         }
 
@@ -53,5 +53,6 @@ export default class Camera {
 
     update() {
         this.controls.update();
+        console.log(this.perspectiveCamera.p);
     }
 }
