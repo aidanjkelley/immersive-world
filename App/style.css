@@ -9,5 +9,92 @@
 html, 
 body {
   overflow: hidden;
+  
 }
 
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 4px solid rgb(109, 201, 204);
+  border-radius: 20px;
+  z-index: 10;
+  background: linear-gradient(to bottom, #ff69b4, #c97bc9);
+  width: 60%;
+  max-width: 40%;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+  animation: hideModal 15s forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+
+@keyframes hideModal {
+  0% {
+    opacity: 1;
+  }
+  75% {opacity: 1;
+  } 
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.castle{
+  text-align: center;
+}
+
+.modal-header  {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+
+
+}
+
+.modal-header .title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: rgb(15, 15, 15); /* Initial color */
+  animation: colorChange 10s infinite; /* Animation for the color change */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  align-items: center;
+}
+
+
+/* Keyframes for the flashing animation */
+@keyframes flashing {
+  0% { opacity: 1; } /* Visible */
+  50% { opacity: 0; } /* Invisible */
+  100% { opacity: 1; } /* Visible */
+}
+.modal-body {
+  padding: 10px 15px;
+  font-size: 125%;
+  line-height: 1.5;
+  
+}
+
+#overlay {
+  position: fixed;
+  /* opacity: 0;*/
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0, .8);
+  pointer-events: none;
+  
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
